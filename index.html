@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Wenlikang - Пробіотик для курей, індиків, гусей, качок. Натуральний склад, гарантія якості, доставка по Україні.">
     <title>Wenlikang - Пробіотик</title>
     
-    <!-- Preconnect для шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Preload критичных шрифтов -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"></noscript>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Gilroy:wght@400;700&family=Roboto:wght@300;400;500;700;900&family=Ubuntu+Sans:wght@300;700;800&display=swap" rel="stylesheet">
+
     <style>
-        /* --- КРИТИЧНЫЕ СТИЛИ ДЛЯ ПЕРВОГО ЭКРАНА --- */
+  /* --- БАЗОВІ НАЛАШТУВАННЯ --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #e5e5e5;
             display: flex;
             justify-content: center;
@@ -26,13 +21,29 @@
         }
         .wrapper {
             width: 100%;
-            max-width: 430px;
+			max-width: 430px;
             background: #FFFFFF;
             overflow-x: hidden;
             position: relative;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
         
+        /* --- КОЛЬОРИ --- */
+        :root {
+            --dark-green: #0F3D2E;
+            --bg-beige: #F8F3EE; /* Бежевий фон для Про товар і Героя */
+            --bg-light-beige: #F3EFE9;
+            --icon-beige: #EDDECF;
+            --yellow: #EBC228;
+            --yellow-btn: #D8AD00;
+            --red: #FF3131;
+            --text-dark: #2B2B2B;
+            --gray: #808080;
+        }
+
+
         /* --- ХЕДЕР --- */
         .header {
             display: flex;
@@ -43,52 +54,30 @@
             position: relative;
             z-index: 20;
         }
-        .header::after {
-            content: "";
-            position: absolute;
-            left: 48%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 2px;
-            height: 80px;
-            background-color: #E0E0E0;
-        }
-        .rating-val { 
-            font-size: 19px; 
-            font-weight: 900; 
-            color: #000; 
-        }
-        .stars { 
-            color: #E67136; 
-            font-size: 24px; 
-            letter-spacing: 1px; 
-        }
-        .sub-text { 
-            font-size: 14px; 
-            color: #555; 
-            text-transform: uppercase; 
-            margin-top: 3px; 
-            font-weight: 500;
-        }
-        .order-title { 
-            font-weight: 900; 
-            text-transform: uppercase; 
-            color: #000; 
-        }
-        .order-time { 
-            font-size: 16px; 
-            text-transform: uppercase; 
-            margin-top: 3px; 
-            color: #ff5500; 
-        }
+		.header::after {
+  content: "";
+  position: absolute;
+  left: 48%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 80px; /* Можна налаштувати висоту лінії */
+  background-color: #E0E0E0; /* Колір лінії (світло-сірий) */
+}
+        .rating-val { font-size: 19px; font-weight: 900; color: #000; }
+        .stars { color: #E67136; font-size: 24px; letter-spacing: 1px; }
+        .sub-text { font-size: 14px; color: #555; text-transform: uppercase; margin-top: 3px; font-weight: 500;}
         
+        .order-title { font-weight: 900; text-transform: uppercase; color: #000; }
+        .order-time { font-size: 16px; text-transform: uppercase; margin-top: 3px; color: #ff5500; }
+
         /* --- ГЕРОЙ --- */
         .hero {
-            background-color: #F8F3EE;
+            background-color: var(--bg-beige);
             position: relative;
             width: 100%;
             overflow: hidden;
-            min-height: 500px;
+            min-height: 500px; 
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -102,14 +91,16 @@
             z-index: 10;
         }
         .hero-title {
+            font-family: 'Ubuntu Sans', sans-serif;
             font-weight: 800;
             font-size: 36px;
-            color: #EBC228;
+            color: var(--yellow);
             text-transform: uppercase;
             margin-bottom: 5px;
             letter-spacing: 0.5px;
         }
         .hero-subtitle {
+            font-family: 'Ubuntu Sans', sans-serif;
             font-weight: 300;
             font-size: 18px;
             text-transform: uppercase;
@@ -125,12 +116,16 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            margin-bottom: -1px;
+            margin-bottom: -1px; 
         }
-        
+        .hero-image {
+            width: 100%;
+            height: auto;
+        }
+
         /* --- ЗЕЛЕНА СМУГА --- */
         .green-strip {
-            background: #0F3D2E;
+            background: var(--dark-green);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -152,475 +147,13 @@
             align-items: center;
             justify-content: center;
         }
+        .gs-icon svg { width: 24px; height: 24px; fill: none; stroke: white; stroke-width: 2; }
         .gs-text {
             color: #fff;
             font-size: 10px;
             font-weight: 500;
             line-height: 1.1;
-        }
-    </style>
-    
-    <!-- Остальные шрифты загружаем асинхронно -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@300;700;800&family=Gilroy:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@300;700;800&family=Gilroy:wght@400;700&display=swap" rel="stylesheet">
-    </noscript>
-</head>
-<body>
-
-    <div class="wrapper">
-        
-        <!-- ХЕДЕР -->
-        <header class="header">
-            <div>
-                <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
-                <div class="sub-text">РЕЙТИНГ МАГАЗИНУ</div>
-            </div>
-            <div class="last-order">
-                <div class="order-title">ОСТАННЄ ЗАМОВЛЕННЯ</div>
-                <div class="order-time" id="orderTimeDisplay"></div>
-            </div>
-        </header>
-
-        <!-- ГЕРОЙ -->
-        <section class="hero">
-            <div class="hero-text-overlay">
-                <div class="hero-title">ПРОБІОТИК</div>
-                <div class="hero-subtitle">ДЛЯ КУРЕЙ, ІНДИКІВ, ГУСЕЙ, КАЧОК</div>
-            </div>
-            
-            <div class="hero-image-container">
-                <img 
-                    src="https://framerusercontent.com/images/eoE559um0RfYrAOjM6ziMfRjne0.png?auto=format,compress&w=430&q=75" 
-                    loading="lazy"
-                    width="430"
-                    height="500"
-                    class="hero-image" 
-                    alt="Wenlikang"
-                >
-            </div>
-
-            <!-- Зелена смуга -->
-            <div class="green-strip">
-                <div class="gs-item">
-                    <div class="gs-icon gs-icon-star">
-                        <svg viewBox="0 0 24 24" width="24" height="24">
-                            <path d="M12 2l2.5 7h7.5l-6 4.5 2.5 7.5-6.5-5-6.5 5 2.5-7.5-6-4.5h7.5z" stroke="white" stroke-width="2" fill="none"/>
-                            <circle cx="12" cy="12" r="6" stroke="white" stroke-width="2" fill="none"/>
-                        </svg>
-                    </div>
-                    <div class="gs-text">Натуральний<br>склад</div>
-                </div>
-                <div class="gs-item">
-                    <div class="gs-icon">
-                        <svg viewBox="0 0 24 24" width="24" height="24">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="none" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <div class="gs-text">Оплата<br>при отриманні</div>
-                </div>
-                <div class="gs-item">
-                    <div class="gs-icon">
-                        <svg viewBox="0 0 24 24" width="24" height="24">
-                            <circle cx="12" cy="12" r="10" fill="none" stroke="white" stroke-width="2"/>
-                            <polyline points="16 9 10 15 8 13" stroke="white" stroke-width="2" fill="none"/>
-                        </svg>
-                    </div>
-                    <div class="gs-text">Гарантія<br>результату</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ЦІНА -->
-        <section class="price-section">
-            <div class="price-left">
-                <div class="price-old">342грн</div>
-                <div class="price-old-label">СТАРА ЦІНА</div>
-            </div>
-            <div class="price-right">
-                <div class="new-label">НОВА ЦІНА</div>
-                <div class="price-current">215<span class="currency">грн</span></div>
-            </div>
-        </section>
-
-        <!-- ФОРМА 1 -->
-        <section class="form-block" id="orderForm">
-            <div class="form-title">
-                ДЛЯ ТОГО ЩОБ <span class="highlight">ОФОРМИТИ</span> ЗАМОВЛЕННЯ<br>
-                <span class="highlight">ЗАЛИШТЕ СВОЮ ЗАЯВКУ</span>
-            </div>
-            <div class="form-subtitle">
-                З вами зв'яжеться менеджер протягом <span>30 хвилин</span>
-            </div>
-
-            <form id="mainOrderForm">
-                <div class="input-wrapper">
-                    <div class="input-icon">
-                        <div class="icon-circle">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        </div>
-                    </div>
-                    <div class="input-field-box">
-                        <input type="text" class="input-field" id="userName" placeholder="Введіть ваше ім'я" required>
-                    </div>
-                </div>
-                <div class="input-wrapper">
-                    <div class="input-icon">
-                        <div class="icon-circle">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        </div>
-                    </div>
-                    <div class="input-field-box">
-                        <input type="tel" class="input-field" id="userPhone" placeholder="Введіть ваш номер телефону" required>
-                    </div>
-                </div>
-                <div class="input-wrapper">
-                    <div class="input-icon">
-                        <div class="icon-circle">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline></svg>
-                        </div>
-                    </div>
-                    <div class="input-field-box">
-                        <div class="quantity-select-wrapper">
-                            <select class="quantity-select" id="quantitySelect">
-                                <option value="1">1 упаковка - 215 грн</option>
-                                <option value="2">2 упаковки - 430 грн</option>
-                                <option value="3">3 упаковки - 645 грн</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-               <button type="submit" class="btn-submit">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
-            </form>
-        </section>
-
-        <!-- СЕКЦІЯ "ПРО ТОВАР" (БЕЖЕВА) -->
-        <section class="section-product">
-            <h2 class="section-title">ПРО <span class="highlight">ТОВАР</span></h2>
-            <div class="zig-zag"></div>
-            
-            <p class="product-text">
-                Польський пробіотик Wenlikang 250 мл — це ефективна натуральна добавка з живими мікроорганізмами для підтримки здоров'я травної системи курей та іншої птиці. Пробіотик сприяє зміцненню імунітету, покращує засвоєння корму, стимулює ріст і продуктивність.
-            </p>
-
-            <!-- БАНКА ВЕЛИКИМ ПЛАНОМ -->
-            <img 
-                src="https://framerusercontent.com/images/PL7fNHUb8KbEaywfKR0MzmsQ.png?auto=format,compress&w=430&q=75" 
-                loading="lazy"
-                width="430"
-                height="300"
-                alt="Bottle" 
-                style="width: 100%; height: auto; display: block; margin: 0 auto;"
-            >
-        </section>
-
-        <!-- СЕКЦІЯ "КОЛИ ЗАСТОСОВУВАТИ" (БІЛА) -->
-        <section class="section-usage">
-            <h2 class="section-title">КОЛИ <span class="highlight">ЗАСТОСОВУВАТИ</span></h2>
-            <div class="zig-zag"></div>
-
-            <div class="pill-list">
-                <div class="pill-item">
-                    <div class="pill-num">1</div>
-                    для курчат після вилуплення
-                </div>
-                <div class="pill-item">
-                    <div class="pill-num">2</div>
-                    після курсу антибіотиків
-                </div>
-                <div class="pill-item">
-                    <div class="pill-num">3</div>
-                    для підвищення несучості, росту та плодючості півнів
-                </div>
-                <div class="pill-item">
-                    <div class="pill-num">4</div>
-                    для профілактики діареї, розладів травлення, кишкових інфекцій
-                </div>
-                <div class="pill-item">
-                    <div class="pill-num">5</div>
-                    у періоди стресу (линька, переїзд, спека)
-                </div>
-            </div>
-
-            <div class="usage-instructions">
-                <h2 class="section-title">ЯК <span class="highlight">ВИКОРИСТОВУВАТИ</span>:</h2>
-                <div class="zig-zag"></div>
-                <p class="usage-text">
-                    Розчинити 20 г пробіотика у 10 л теплої води, настояти 16–18 годин при кімнатній температурі, після чого готовий розчин додають у поїлки. Підходить для щоденного використання або за потреби.
-                </p>
-            </div>
-        </section>
-
-        <!-- ПЕРЕВАГИ -->
-        <section style="background-color: #F8F3EE; padding-top: 40px; padding-bottom: 40px;">
-            <h2 class="section-title">ПЕРЕВАГИ <span class="highlight">WENLIKANG</span>:</h2>
-            <div class="zig-zag"></div>
-
-            <div class="check-list">
-                <div class="pill-item">
-                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none" width="10" height="10"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    Натуральна формула без хімії та антибіотиків
-                </div>
-                <div class="pill-item">
-                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none" width="10" height="10"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    Живі мікроорганізми для оптимального здоров'я птиці
-                </div>
-                <div class="pill-item">
-                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none" width="10" height="10"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    Усім видам птиці: курей, індиків, гусей, качок
-                </div>
-                <div class="pill-item">
-                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none" width="10" height="10"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    Виробництво Польща, якість гарантована
-                </div>
-                <div class="pill-item">
-                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none" width="10" height="10"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    Доступна ціна при високій ефективності
-                </div>
-            </div>
-
-            <div class="dark-cards">
-                <div class="d-card">
-                    <div class="d-title">ЗМІЦНЮЄ <span class="highlight">ІМУНІТЕТ</span></div>
-                    <div class="d-desc">Живі культури бактерій захищають птицю від інфекцій</div>
-                </div>
-                <div class="d-card">
-                    <div class="d-title">БІЛЬШЕ <span class="highlight">ЯЄЦЬ</span></div>
-                    <div class="d-desc">Підвищує несучість і якість яєць</div>
-                </div>
-                <div class="d-card">
-                    <div class="d-title">КРАЩА <span class="highlight">ЗАСВОЮВАНІСТЬ</span></div>
-                    <div class="d-desc">Покращує травлення та засвоєння поживних речовин</div>
-                </div>
-                <div class="d-card">
-                    <div class="d-title">ШВИДШИЙ <span class="highlight">РІСТ</span></div>
-                    <div class="d-desc">Стимулює розвиток та набір ваги молодої птиці</div>
-                </div>
-            </div>
-
-            <div style="padding: 0 20px;">
-                <button type="button" class="btn-submit" id="scrollToFormBtn" style="margin-top: 25px;">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
-            </div>
-        </section>
-
-        <!-- ВІДГУКИ -->
-        <section class="reviews">
-            <h2 class="section-title">ВЖЕ БІЛЬШЕ <span class="highlight">10 000</span> ЗАДОВОЛЕНИХ КОРИСТУВАЧІВ ПО ВСІЙ УКРАЇНІ!</h2>
-            
-            <div class="slider-window">
-                <div class="slider-track" id="reviewTrack">
-                    <!-- ГРУПА 1 -->
-                    <div class="slide-group">
-                        <div class="review-item">
-                            <div class="r-head">
-                                <img 
-                                    src="https://framerusercontent.com/images/bi180imxL8svhBxk4aHIO8uwWY.png?auto=format,compress&w=100&q=70" 
-                                    loading="lazy"
-                                    width="50"
-                                    height="50"
-                                    class="r-ava" 
-                                    alt="Avatar"
-                                >
-                                <div class="r-info">
-                                    <h4>Катерина Лужецька</h4>
-                                    <p>сьогодні о 11:32</p>
-                                    <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
-                                </div>
-                            </div>
-                            <div class="r-text">Замовляла тут пробіотик для курей. Що можу сказати, я дуже задоволена, кури почали нестися набагато краще.</div>
-                        </div>
-                        <div class="review-item">
-                            <div class="r-head">
-                                <img 
-                                    src="https://img.freepik.com/free-photo/beautiful-young-blonde-woman-street-posing-with-wind-her-hair_1321-4241.jpg?t=st=1744898457~exp=1744902057~hmac=bc8b9d278f1521b1e05cc008e716624b2c5dd70d9a3c64d2d1021430055f06f7&w=740&auto=format&fit=crop&q=50" 
-                                    loading="lazy"
-                                    width="50"
-                                    height="50"
-                                    class="r-ava" 
-                                    alt="Avatar"
-                                >
-                                <div class="r-info">
-                                    <h4>Іван Петров</h4>
-                                    <p>вчора</p>
-                                    <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
-                                </div>
-                            </div>
-                            <div class="r-text">Все супер! Качки ростуть як на дріжджах.</div>
-                        </div>
-                    </div>
-                    <!-- ГРУПА 2 -->
-                    <div class="slide-group">
-                        <div class="review-item">
-                            <div class="r-head">
-                                <img 
-                                    src="https://img.freepik.com/free-photo/old-person-learning-use-technology_23-2149308897.jpg?t=st=1744898602~exp=1744902202~hmac=8d31d2f38e12d594e7c2133b6a5159b5d85f7d8bdc9d58ac33dfc92cd93774d5&w=740&auto=format&fit=crop&q=50" 
-                                    loading="lazy"
-                                    width="50"
-                                    height="50"
-                                    class="r-ava" 
-                                    alt="Олена Коваленко"
-                                >
-                                <div class="r-info">
-                                    <h4>Олена Коваленко</h4>
-                                    <p>3 дні тому</p>
-                                    <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
-                                </div>
-                            </div>
-                            <div class="r-text">Використовую Wenlikang для своїх курей вже місяць. Результат чудовий! Птиця стала активнішою, покращилося травлення, яєць стало більше. Рекомендую всім птицеводам!</div>
-                        </div>
-                        <div class="review-item">
-                            <div class="r-head">
-                                <img 
-                                    src="https://img.freepik.com/free-photo/expressive-woman-posing-outdoor_23-2149601802.jpg?t=st=1744898457~exp=1744902057~hmac=afc4896c6bd8bcdd529d2b7bd9c6a64fb9b8514b3f8082a5b6c06a6bb3ed8a3a&w=740&auto=format&fit=crop&q=50" 
-                                    loading="lazy"
-                                    width="50"
-                                    height="50"
-                                    class="r-ava" 
-                                    alt="Наталія Шевченко"
-                                >
-                                <div class="r-info">
-                                    <h4>Наталія Шевченко</h4>
-                                    <p>тиждень тому</p>
-                                    <div class="rating-val">4.8/5 <span class="stars">★★★★</span></div>
-                                </div>
-                            </div>
-                            <div class="r-text">Після курсу антибіотиків мої індички дуже ослабли. За порадою ветеринара почала давати Wenlikang. За 2 тижні птиця повністю відновилася, з'явився апетит, покращився стан пір'я. Дуже дякую за якісний продукт!</div>
-                        </div>
-                    </div>
-                    <!-- ГРУПА 3 -->
-                    <div class="slide-group">
-                        <div class="review-item">
-                            <div class="r-head">
-                                <img 
-                                    src="https://img.freepik.com/free-photo/young-woman-with-curly-hair-wearing-glasses_23-2149200756.jpg?t=st=1744904216~exp=1744907816~hmac=1179b4f40a6e631dc3a0d5c296ea0c5e4f3a8ad7e0ed63d38a9ea0700b15b8f7&w=740&auto=format&fit=crop&q=50" 
-                                    loading="lazy"
-                                    width="50"
-                                    height="50"
-                                    class="r-ava" 
-                                    alt="Василь Мельник"
-                                >
-                                <div class="r-info">
-                                    <h4>Василь Мельник</h4>
-                                    <p>2 тижні тому</p>
-                                    <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
-                                </div>
-                            </div>
-                            <div class="r-text">Я фермер з 20-річним досвідом. Wenlikang - один з найкращих пробіотиків, які я використовував. Особливо ефективний для молодняка - курчата швидше ростуть, менше хворіють. Польська якість відчувається!</div>
-                        </div>
-                        <div class="review-item">
-                            <div class="r-head">
-                                <img 
-                                    src="https://img.freepik.com/free-photo/old-person-learning-use-technology_23-2149308897.jpg?t=st=1744898602~exp=1744902202~hmac=8d31d2f38e12d594e7c2133b6a5159b5d85f7d8bdc9d58ac33dfc92cd93774d5&w=740&auto=format&fit=crop&q=50" 
-                                    loading="lazy"
-                                    width="50"
-                                    height="50"
-                                    class="r-ava" 
-                                    alt="Микола Бойко"
-                                >
-                                <div class="r-info">
-                                    <h4>Микола Бойко</h4>
-                                    <p>місяць тому</p>
-                                   <div class="rating-val">4.8/5 <span class="stars">★★★★</span></div>
-                                </div>
-                            </div>
-                            <div class="r-text">Застосовую Wenlikang для всієї своєї птиці - курей, гусей, качок. Результат вражає! Покращилася засвоюваність корму, птиця менше хворіє, а несучість зросла на 15-20%. Натуральний склад - це те, що мені подобається найбільше.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="nav-arrows">
-                <div class="arrow left" onclick="moveSlide(-1)"></div>
-                <div class="arrow right" onclick="moveSlide(1)"></div>
-            </div>
-        </section>
-
-        <!-- ДОСТАВКА -->
-        <section class="delivery">
-            <h2 class="section-title">
-                <span style="color:#1A692F; text-transform:uppercase;">ШВИДКА ТА ЗРУЧНА</span><br>
-                ДОСТАВКА ПО ВСІЙ УКРАЇНІ
-            </h2>
-            <div class="logo-row">
-                <div class="logo-box"><img src="./up.jpg" loading="lazy" width="180" height="70" alt="Ukrposhta"></div>
-                <div class="logo-box"><img src="./np.jpg" loading="lazy" width="180" height="70" alt="Nova Poshta"></div>
-            </div>
-            <div class="del-info">
-                <div class="del-line">Доставка від 1 до 3 робочих днів</div>
-                <div class="del-line">Оплата при отриманні — без ризику для вас</div>
-                <div class="del-line">Пакуємо надійно, щоб товар дійшов у ідеальному стані</div>
-            </div>
-        </section>
-
-        <!-- НИЖНЯ ФОРМА -->
-        <section class="form-block" style="padding-top: 30px;">
-            <div class="form-title">
-                ДЛЯ ТОГО ЩОБ <span class="highlight">ОФОРМИТИ</span> ЗАМОВЛЕННЯ<br>
-                <span class="highlight">ЗАЛИШТЕ СВОЮ ЗАЯВКУ</span>
-            </div>
-            <div class="form-subtitle">
-                З вами зв'яжеться менеджер протягом <span>30 хвилин</span>
-            </div>
-            <form id="bottomOrderForm">
-                <div class="input-wrapper">
-                    <div class="input-icon">
-                        <div class="icon-circle">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        </div>
-                    </div>
-                    <div class="input-field-box">
-                        <input type="text" class="input-field" id="bottomUserName" placeholder="Введіть ваше ім'я" required>
-                    </div>
-                </div>
-                <div class="input-wrapper">
-                    <div class="input-icon">
-                        <div class="icon-circle">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        </div>
-                    </div>
-                    <div class="input-field-box">
-                        <input type="tel" class="input-field" id="bottomUserPhone" placeholder="Введіть ваш номер телефону" required>
-                    </div>
-                </div>
-                <div class="input-wrapper">
-                    <div class="input-icon">
-                        <div class="icon-circle">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline></svg>
-                        </div>
-                    </div>
-                    <div class="input-field-box">
-                        <div class="quantity-select-wrapper">
-                            <select class="quantity-select" id="bottomQuantitySelect">
-                                <option value="1">1 упаковка - 215 грн</option>
-                                <option value="2">2 упаковки - 430 грн</option>
-                                <option value="3">3 упаковки - 645 грн</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-               <button type="submit" class="btn-submit">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
-            </form>
-        </section>
-
-    </div>
-
-    <!-- ОСНОВНЫЕ СТИЛИ ПЕРЕНЕСЕНЫ В КОНЕЦ -->
-    <style>
-        /* --- БАЗОВЫЕ СТИЛИ --- */
-        img { max-width: 100%; display: block; }
-        ul { list-style: none; }
-        
-        /* --- КОЛЬОРИ --- */
-        :root {
-            --dark-green: #0F3D2E;
-            --bg-beige: #F8F3EE;
-            --bg-light-beige: #F3EFE9;
-            --icon-beige: #EDDECF;
-            --yellow: #EBC228;
-            --yellow-btn: #D8AD00;
-            --red: #FF3131;
-            --text-dark: #2B2B2B;
-            --gray: #808080;
+            font-family: 'Roboto', sans-serif;
         }
 
         /* --- ЦІНА --- */
@@ -675,7 +208,7 @@
             width: 30px; height: 30px; border: 1.5px solid var(--dark-green); border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
         }
-        .icon-circle svg { stroke: var(--dark-green); fill: none; stroke-width: 1.5; }
+        .icon-circle svg { width: 16px; height: 16px; stroke: var(--dark-green); fill: none; stroke-width: 1.5; }
         
         .input-field-box {
             flex: 1; border: 1px solid #eaeaea; border-left: none; display: flex; align-items: center; padding: 0 15px; background: #fff;
@@ -724,7 +257,7 @@
 
         /* --- СЕКЦІЯ "ПРО ТОВАР" (БЕЖЕВА) --- */
         .section-product {
-            background-color: var(--bg-beige);
+            background-color: var(--bg-beige); /* БЕЖЕВИЙ ФОН */
             text-align: center;
         }
         .section-title {
@@ -734,7 +267,7 @@
             text-transform: uppercase;
             color: var(--text-dark);
             margin-bottom: 5px;
-            padding-top: 40px;
+	    padding-top: 40px;
         }
         .section-title span { color: var(--yellow); }
         .zig-zag {
@@ -746,24 +279,24 @@
             background-position: center;
             background-size: contain;
         }
-        .product-text { font-size: 14px; line-height: 1.5; color: #000; margin-bottom: 20px; padding: 1px 50px; }
+        .product-text { font-size: 14px; line-height: 1.5; color: #000; margin-bottom: 20px;padding: 1px 50px;  }
         
         /* --- СЕКЦІЯ "КОЛИ ЗАСТОСОВУВАТИ" (БІЛА) --- */
         .section-usage {
-            background-color: #FFFFFF;
+            background-color: #FFFFFF; /* БІЛИЙ ФОН */
             text-align: center;
-            padding: 1px 20px;
+             padding: 1px 20px;
         }
 
         /* ПИЛЮЛІ (СПИСОК) */
         .pill-list {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 25px; 
             margin-top: 30px;
         }
         .pill-item {
-            background: #EFE0CF;
+            background: #EFE0CF; 
             border-radius: 30px;
             padding: 15px 20px;
             position: relative;
@@ -807,7 +340,7 @@
             position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 20px; height: 20px;
             background: #2B2B2B; border-radius: 50%; display: flex; align-items: center; justify-content: center;
         }
-        .check-badge-black svg { stroke: white; stroke-width: 3; }
+        .check-badge-black svg { width: 10px; height: 10px; stroke: white; stroke-width: 3; }
 
         .dark-cards { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; padding: 0 20px;}
         .d-card { background: var(--dark-green); padding: 15px; color: #fff; text-align: center; }
@@ -843,149 +376,523 @@
         .del-info { background: var(--icon-beige); border-radius: 15px; padding: 20px; }
         .del-line { font-size: 14px; margin-bottom: 8px; color: #000; }
     </style>
+</head>
+<body>
 
-    <!-- JavaScript в конце тела -->
-    <script>
-        // Минимальный критичный JS для первого экрана
-        document.addEventListener('DOMContentLoaded', function() {
-            // Только критичные функции
-            const timeDisplay = document.getElementById('orderTimeDisplay');
-            if (timeDisplay) {
-                const now = new Date();
-                const day = String(now.getDate()).padStart(2, '0');
-                const month = String(now.getMonth() + 1).padStart(2, '0');
-                const year = now.getFullYear();
-                const dateString = `${day}.${month}.${year}`;
-                const randomMinutes = Math.floor(Math.random() * 56) + 5;
-                
-                let timeAgoText = "";
-                if (randomMinutes < 60) {
-                    timeAgoText = `${randomMinutes} ХВ ТОМУ`;
-                } else {
-                    const hours = Math.floor(randomMinutes / 60);
-                    const mins = randomMinutes % 60;
-                    timeAgoText = mins > 0 ? `${hours} ГОД ${mins} ХВ ТОМУ` : `${hours} ГОД ТОМУ`;
-                }
-                
-                timeDisplay.textContent = `${dateString} ${timeAgoText}`;
-            }
-            
-            // Остальной JS загружаем после полной загрузки страницы
-            if (window.requestIdleCallback) {
-                requestIdleCallback(loadFullJS, { timeout: 2000 });
-            } else {
-                setTimeout(loadFullJS, 500);
-            }
-        });
+    <div class="wrapper">
         
-        function loadFullJS() {
-            // Весь ваш существующий JS код
-            let currentGroup = 0;
-            const track = document.getElementById('reviewTrack');
-            const groups = 3;
-            const unitPrice = 215;
+        <!-- ХЕДЕР -->
+        <header class="header">
+            <div>
+                <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
+                <div class="sub-text">РЕЙТИНГ МАГАЗИНУ</div>
+            </div>
+            <div class="last-order">
+  <div class="order-title">ОСТАННЄ ЗАМОВЛЕННЯ</div>
+  <!-- Додали ID "orderTimeDisplay" -->
+  <div class="order-time" id="orderTimeDisplay"></div>
+</div>
+        </header>
 
-            function moveSlide(dir) {
-                if (!track) return;
-                currentGroup += dir;
-                if (currentGroup < 0) currentGroup = groups - 1;
-                if (currentGroup >= groups) currentGroup = 0;
-                track.style.transform = `translateX(-${currentGroup * 100}%)`;
-            }
+        <!-- ГЕРОЙ -->
+        <section class="hero">
+            <div class="hero-text-overlay">
+                <div class="hero-title">ПРОБІОТИК</div>
+                <div class="hero-subtitle">ДЛЯ КУРЕЙ, ІНДИКІВ, ГУСЕЙ, КАЧОК</div>
+            </div>
+            
+            <div class="hero-image-container">
+                <img src="https://framerusercontent.com/images/eoE559um0RfYrAOjM6ziMfRjne0.png" class="hero-image" alt="Wenlikang">
+            </div>
 
-            // Функция для расчета общей стоимости
-            function calculateTotalPrice(quantity) {
-                return unitPrice * quantity;
-            }
+            <!-- Зелена смуга -->
+            <div class="green-strip">
+                <div class="gs-item">
+                    <div class="gs-icon gs-icon-star">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2l2.5 7h7.5l-6 4.5 2.5 7.5-6.5-5-6.5 5 2.5-7.5-6-4.5h7.5z" stroke="white" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="6" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="gs-text">Натуральний<br>склад</div>
+                </div>
+                <div class="gs-item">
+                    <div class="gs-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg>
+                    </div>
+                    <div class="gs-text">Оплата<br>при отриманні</div>
+                </div>
+                <div class="gs-item">
+                    <div class="gs-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="16 9 10 15 8 13" />
+                        </svg>
+                    </div>
+                    <div class="gs-text">Гарантія<br>результату</div>
+                </div>
+            </div>
+        </section>
 
-            // Функция для скролла к форме заказа
-            function scrollToOrderForm() {
-                const orderForm = document.getElementById('orderForm');
-                if (orderForm) {
-                    orderForm.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            }
+        <!-- ЦІНА -->
+        <section class="price-section">
+            <div class="price-left">
+                <div class="price-old">342грн</div>
+                <div class="price-old-label">СТАРА ЦІНА</div>
+            </div>
+            <div class="price-right">
+                <div class="new-label">НОВА ЦІНА</div>
+                <div class="price-current">215<span class="currency">грн</span></div>
+            </div>
+        </section>
 
+        <!-- ФОРМА 1 -->
+        <section class="form-block" id="orderForm">
+            <div class="form-title">
+                ДЛЯ ТОГО ЩОБ <span class="highlight">ОФОРМИТИ</span> ЗАМОВЛЕННЯ<br>
+                <span class="highlight">ЗАЛИШТЕ СВОЮ ЗАЯВКУ</span>
+            </div>
+            <div class="form-subtitle">
+                З вами зв'яжеться менеджер протягом <span>30 хвилин</span>
+            </div>
+
+            <form id="mainOrderForm">
+                <div class="input-wrapper">
+                    <div class="input-icon">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                    </div>
+                    <div class="input-field-box">
+                        <input type="text" class="input-field" id="userName" placeholder="Введіть ваше ім'я" required>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <div class="input-icon">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="input-field-box">
+                        <input type="tel" class="input-field" id="userPhone" placeholder="Введіть ваш номер телефону" required>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <div class="input-icon">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="input-field-box">
+                        <div class="quantity-select-wrapper">
+                            <select class="quantity-select" id="quantitySelect">
+                                <option value="1">1 упаковка - 215 грн</option>
+                                <option value="2">2 упаковки - 430 грн</option>
+                                <option value="3">3 упаковки - 645 грн</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+               <button type="submit" class="btn-submit">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
+            </form>
+        </section>
+
+        <!-- СЕКЦІЯ "ПРО ТОВАР" (БЕЖЕВА) -->
+        <section class="section-product">
+            <h2 class="section-title">ПРО <span class="highlight">ТОВАР</span></h2>
+            <div class="zig-zag"></div>
+            
+            <p class="product-text">
+                Польський пробіотик Wenlikang 250 мл — це ефективна натуральна добавка з живими мікроорганізмами для підтримки здоров'я травної системи курей та іншої птиці. Пробіотик сприяє зміцненню імунітету, покращує засвоєння корму, стимулює ріст і продуктивність.
+            </p>
+
+            <!-- БАНКА ВЕЛИКИМ ПЛАНОМ -->
+            <img src="https://framerusercontent.com/images/PL7fNHUb8KbEaywfKR0MzmsQ.png" alt="Bottle" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+        </section>
+
+        <!-- СЕКЦІЯ "КОЛИ ЗАСТОСОВУВАТИ" (БІЛА) -->
+        <section class="section-usage">
+            <h2 class="section-title">КОЛИ <span class="highlight">ЗАСТОСОВУВАТИ</span></h2>
+            <div class="zig-zag"></div>
+
+            <div class="pill-list">
+                <div class="pill-item">
+                    <div class="pill-num">1</div>
+                    для курчат після вилуплення
+                </div>
+                <div class="pill-item">
+                    <div class="pill-num">2</div>
+                    після курсу антибіотиків
+                </div>
+                <div class="pill-item">
+                    <div class="pill-num">3</div>
+                    для підвищення несучості, росту та плодючості півнів
+                </div>
+                <div class="pill-item">
+                    <div class="pill-num">4</div>
+                    для профілактики діареї, розладів травлення, кишкових інфекцій
+                </div>
+                <div class="pill-item">
+                    <div class="pill-num">5</div>
+                    у періоди стресу (линька, переїзд, спека)
+                </div>
+            </div>
+
+            <div class="usage-instructions">
+                <h2 class="section-title">ЯК <span class="highlight">ВИКОРИСТОВУВАТИ</span>:</h2>
+                <div class="zig-zag"></div>
+                <p class="usage-text">
+                    Розчинити 20 г пробіотика у 10 л теплої води, настояти 16–18 годин при кімнатній температурі, після чого готовий розчин додають у поїлки. Підходить для щоденного використання або за потреби.
+                </p>
+            </div>
+        </section>
+
+        <!-- ПЕРЕВАГИ -->
+        <section style="background-color: var(--bg-beige); padding-top: 40px; padding-bottom: 40px;">
+            <h2 class="section-title">ПЕРЕВАГИ <span class="highlight">WENLIKANG</span>:</h2>
+            <div class="zig-zag"></div>
+
+            <div class="check-list">
+                <div class="pill-item">
+                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    Натуральна формула без хімії та антибіотиків
+                </div>
+                <div class="pill-item">
+                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    Живі мікроорганізми для оптимального здоров'я птиці
+                </div>
+                <div class="pill-item">
+                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    Усім видам птиці: курей, індиків, гусей, качок
+                </div>
+                <div class="pill-item">
+                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    Виробництво Польща, якість гарантована
+                </div>
+		<div class="pill-item">
+                    <div class="check-badge-black"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    Доступна ціна при високій ефективності
+                </div>
+
+            </div>
+
+            <div class="dark-cards">
+                <div class="d-card">
+                    <div class="d-title">ЗМІЦНЮЄ <span class="highlight">ІМУНІТЕТ</span></div>
+                    <div class="d-desc">Живі культури бактерій захищають птицю від інфекцій</div>
+                </div>
+                <div class="d-card">
+                    <div class="d-title">БІЛЬШЕ <span class="highlight">ЯЄЦЬ</span></div>
+                    <div class="d-desc">Підвищує несучість і якість яєць</div>
+                </div>
+                <div class="d-card">
+                    <div class="d-title">КРАЩА <span class="highlight">ЗАСВОЮВАНІСТЬ</span></div>
+                    <div class="d-desc">Покращує травлення та засвоєння поживних речовин</div>
+                </div>
+                <div class="d-card">
+                    <div class="d-title">ШВИДШИЙ <span class="highlight">РІСТ</span></div>
+                    <div class="d-desc">Стимулює розвиток та набір ваги молодої птиці</div>
+                </div>
+            </div>
+
+            <div style="padding: 0 20px;">
+                <button type="button" class="btn-submit" id="scrollToFormBtn" style="margin-top: 25px;">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
+            </div>
+        </section>
+
+        <!-- ВІДГУКИ -->
+        <section class="reviews">
+            <h2 class="section-title">ВЖЕ БІЛЬШЕ <span class="highlight">10 000</span> ЗАДОВОЛЕНИХ КОРИСТУВАЧІВ ПО ВСІЙ УКРАЇНІ!</h2>
+            
+            <div class="slider-window">
+                <div class="slider-track" id="reviewTrack">
+                    <!-- ГРУПА 1 -->
+                    <div class="slide-group">
+                        <div class="review-item">
+                            <div class="r-head">
+                                <img src="https://framerusercontent.com/images/bi180imxL8svhBxk4aHIO8uwWY.png" class="r-ava" alt="Avatar">
+                                <div class="r-info">
+                                    <h4>Катерина Лужецька</h4>
+                                    <p>сьогодні о 11:32</p>
+                                    <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
+
+                                </div>
+                            </div>
+                            <div class="r-text">Замовляла тут пробіотик для курей. Що можу сказати, я дуже задоволена, кури почали нестися набагато краще.</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="r-head">
+                                <img src="https://img.freepik.com/free-photo/beautiful-young-blonde-woman-street-posing-with-wind-her-hair_1321-4241.jpg?t=st=1744898457~exp=1744902057~hmac=bc8b9d278f1521b1e05cc008e716624b2c5dd70d9a3c64d2d1021430055f06f7&w=740" class="r-ava" alt="Avatar">
+                                <div class="r-info">
+                                    <h4>Іван Петров</h4>
+                                    <p>вчора</p>
+                                    <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
+
+                                </div>
+                            </div>
+                            <div class="r-text">Все супер! Качки ростуть як на дріжджах.</div>
+                        </div>
+                    </div>
+                    <!-- ГРУПА 2 -->
+                    <div class="slide-group">
+                        <div class="review-item">
+                            <div class="r-head">
+                                <img src="https://img.freepik.com/free-photo/old-person-learning-use-technology_23-2149308897.jpg?t=st=1744898602~exp=1744902202~hmac=8d31d2f38e12d594e7c2133b6a5159b5d85f7d8bdc9d58ac33dfc92cd93774d5&w=740" class="r-ava" alt="Олена Коваленко">
+                                <div class="r-info">
+                                    <h4>Олена Коваленко</h4>
+                                    <p>3 дні тому</p>
+                                    <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
+
+                                </div>
+                            </div>
+                            <div class="r-text">Використовую Wenlikang для своїх курей вже місяць. Результат чудовий! Птиця стала активнішою, покращилося травлення, яєць стало більше. Рекомендую всім птицеводам!</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="r-head">
+                                <img src="https://img.freepik.com/free-photo/expressive-woman-posing-outdoor_23-2149601802.jpg?t=st=1744898457~exp=1744902057~hmac=afc4896c6bd8bcdd529d2b7bd9c6a64fb9b8514b3f8082a5b6c06a6bb3ed8a3a&w=740" class="r-ava" alt="Наталія Шевченко">
+                                <div class="r-info">
+                                    <h4>Наталія Шевченко</h4>
+                                    <p>тиждень тому</p>
+                                    <div class="rating-val">4.8/5 <span class="stars">★★★★</span></div>
+
+                                </div>
+                            </div>
+                            <div class="r-text">Після курсу антибіотиків мої індички дуже ослабли. За порадою ветеринара почала давати Wenlikang. За 2 тижні птиця повністю відновилася, з'явився апетит, покращився стан пір'я. Дуже дякую за якісний продукт!</div>
+                        </div>
+                    </div>
+                    <!-- ГРУПА 3 -->
+                    <div class="slide-group">
+                        <div class="review-item">
+                            <div class="r-head">
+                                <img src="https://img.freepik.com/free-photo/young-woman-with-curly-hair-wearing-glasses_23-2149200756.jpg?t=st=1744904216~exp=1744907816~hmac=1179b4f40a6e631dc3a0d5c296ea0c5e4f3a8ad7e0ed63d38a9ea0700b15b8f7&w=740" class="r-ava" alt="Василь Мельник">
+                                <div class="r-info">
+                                    <h4>Василь Мельник</h4>
+                                    <p>2 тижні тому</p>
+                                    <div class="rating-val">4.8/5 <span class="stars">★★★★★</span></div>
+
+                                </div>
+                            </div>
+                            <div class="r-text">Я фермер з 20-річним досвідом. Wenlikang - один з найкращих пробіотиків, які я використовував. Особливо ефективний для молодняка - курчата швидше ростуть, менше хворіють. Польська якість відчувається!</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="r-head">
+                                <img src="https://img.freepik.com/free-photo/old-person-learning-use-technology_23-2149308897.jpg?t=st=1744898602~exp=1744902202~hmac=8d31d2f38e12d594e7c2133b6a5159b5d85f7d8bdc9d58ac33dfc92cd93774d5&w=740" class="r-ava" alt="Микола Бойко">
+                                <div class="r-info">
+                                    <h4>Микола Бойко</h4>
+                                    <p>місяць тому</p>
+                                   <div class="rating-val">4.8/5 <span class="stars">★★★★</span></div>
+
+                                </div>
+                            </div>
+                            <div class="r-text">Застосовую Wenlikang для всієї своєї птиці - курей, гусей, качок. Результат вражає! Покращилася засвоюваність корму, птиця менше хворіє, а несучість зросла на 15-20%. Натуральний склад - це те, що мені подобається найбільше.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-arrows">
+                <div class="arrow left" onclick="moveSlide(-1)"></div>
+                <div class="arrow right" onclick="moveSlide(1)"></div>
+            </div>
+        </section>
+
+        <!-- ДОСТАВКА -->
+        <section class="delivery">
+            <h2 class="section-title">
+                <span style="color:var(--light-green); text-transform:uppercase; color:#1A692F;">ШВИДКА ТА ЗРУЧНА</span><br>
+                ДОСТАВКА ПО ВСІЙ УКРАЇНІ
+            </h2>
+            <div class="logo-row">
+                <div class="logo-box"><img src="./up.jpg" alt="Ukrposhta"></div>
+                <div class="logo-box"><img src="./np.jpg" alt="Nova Poshta"></div>
+            </div>
+            <div class="del-info">
+                <div class="del-line">Доставка від 1 до 3 робочих днів</div>
+                <div class="del-line">Оплата при отриманні — без ризику для вас</div>
+                <div class="del-line">Пакуємо надійно, щоб товар дійшов у ідеальному стані</div>
+            </div>
+        </section>
+
+        <!-- НИЖНЯ ФОРМА -->
+        <section class="form-block" style="padding-top: 30px;">
+            <div class="form-title">
+                ДЛЯ ТОГО ЩОБ <span class="highlight">ОФОРМИТИ</span> ЗАМОВЛЕННЯ<br>
+                <span class="highlight">ЗАЛИШТЕ СВОЮ ЗАЯВКУ</span>
+            </div>
+            <div class="form-subtitle">
+                З вами зв'яжеться менеджер протягом <span>30 хвилин</span>
+            </div>
+            <form id="bottomOrderForm">
+                <div class="input-wrapper">
+                    <div class="input-icon">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                    </div>
+                    <div class="input-field-box">
+                        <input type="text" class="input-field" id="bottomUserName" placeholder="Введіть ваше ім'я" required>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <div class="input-icon">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="input-field-box">
+                        <input type="tel" class="input-field" id="bottomUserPhone" placeholder="Введіть ваш номер телефону" required>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <div class="input-icon">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="input-field-box">
+                        <div class="quantity-select-wrapper">
+                            <select class="quantity-select" id="bottomQuantitySelect">
+                                <option value="1">1 упаковка - 215 грн</option>
+                                <option value="2">2 упаковки - 430 грн</option>
+                                <option value="3">3 упаковки - 645 грн</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+               <button type="submit" class="btn-submit">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
+            </form>
+        </section>
+
+    </div>
+
+    <script>
+        let currentGroup = 0;
+        const track = document.getElementById('reviewTrack');
+        const groups = 3;
+        const unitPrice = 215; // Цена за 1 упаковку
+
+        function moveSlide(dir) {
+            currentGroup += dir;
+            if (currentGroup < 0) currentGroup = groups - 1;
+            if (currentGroup >= groups) currentGroup = 0;
+            track.style.transform = `translateX(-${currentGroup * 100}%)`;
+        }
+
+        // Функция для расчета общей стоимости
+        function calculateTotalPrice(quantity) {
+            return unitPrice * quantity;
+        }
+
+        // Функция для обновления отображаемой цены
+        function updatePriceDisplay(selectElement, priceElement) {
+            const quantity = parseInt(selectElement.value);
+            const totalPrice = calculateTotalPrice(quantity);
+            priceElement.textContent = `Загальна вартість: ${totalPrice} грн`;
+        }
+
+        // Функция для скролла к форме заказа
+        function scrollToOrderForm() {
+            const orderForm = document.getElementById('orderForm');
+            orderForm.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Инициализация при загрузке страницы
+       document.addEventListener('DOMContentLoaded', function() {
+    // --- Логіка оновлення дати та рандомного часу ---
+    const timeDisplay = document.getElementById('orderTimeDisplay');
+    const now = new Date();
+
+    // Форматуємо дату: ДД.ММ.РРРР
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    const dateString = `${day}.${month}.${year}`;
+
+    // Геруємо рандомні хвилини від 5 до 60
+    const randomMinutes = Math.floor(Math.random() * (60 - 5 + 1)) + 5;
+    
+    let timeAgoText = "";
+    if (randomMinutes < 60) {
+        timeAgoText = `${randomMinutes} ХВ ТОМУ`;
+    } else {
+        const hours = Math.floor(randomMinutes / 60);
+        const mins = randomMinutes % 60;
+        timeAgoText = mins > 0 ? `${hours} ГОД ${mins} ХВ ТОМУ` : `${hours} ГОД ТОМУ`;
+    }
+
+    // Виводимо в блок
+    timeDisplay.textContent = `${dateString} ${timeAgoText}`;
             // Элементы верхней формы
             const quantitySelect = document.getElementById('quantitySelect');
+            const calculatedPrice = document.getElementById('calculatedPrice');
             
             // Элементы нижней формы
             const bottomQuantitySelect = document.getElementById('bottomQuantitySelect');
+            const bottomCalculatedPrice = document.getElementById('bottomCalculatedPrice');
             
             // Кнопка для скролла к форме
             const scrollToFormBtn = document.getElementById('scrollToFormBtn');
             
             // Обновление цены при изменении количества в верхней форме
-            if (quantitySelect) {
-                quantitySelect.addEventListener('change', function() {
-                    // update price if needed
-                });
-            }
+            quantitySelect.addEventListener('change', function() {
+                updatePriceDisplay(quantitySelect, calculatedPrice);
+            });
             
             // Обновление цены при изменении количества в нижней форме
-            if (bottomQuantitySelect) {
-                bottomQuantitySelect.addEventListener('change', function() {
-                    // update price if needed
-                });
-            }
+            bottomQuantitySelect.addEventListener('change', function() {
+                updatePriceDisplay(bottomQuantitySelect, bottomCalculatedPrice);
+            });
             
             // Обработка клика на кнопку "ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ" в середине лендинга
-            if (scrollToFormBtn) {
-                scrollToFormBtn.addEventListener('click', function() {
-                    scrollToOrderForm();
-                });
-            }
+            scrollToFormBtn.addEventListener('click', function() {
+                scrollToOrderForm();
+            });
             
             // Обработка отправки верхней формы
-            const mainForm = document.getElementById('mainOrderForm');
-            if (mainForm) {
-                mainForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const name = document.getElementById('userName').value;
-                    const phone = document.getElementById('userPhone').value;
-                    const quantity = quantitySelect ? quantitySelect.value : '1';
-                    const totalPrice = calculateTotalPrice(parseInt(quantity));
-                    
-                    // Здесь должна быть логика отправки данных на сервер
-                    console.log('Отправка заказа:', { name, phone, quantity, totalPrice });
-                    
-                    // Показываем сообщение об успехе
-                    alert(`Дякуємо за замовлення, ${name}! Менеджер зв'яжеться з вами протягом 30 хвилин.`);
-                    
-                    // Очищаем форму
-                    this.reset();
-                });
-            }
+            document.getElementById('mainOrderForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('userName').value;
+                const phone = document.getElementById('userPhone').value;
+                const quantity = quantitySelect.value;
+                const totalPrice = calculateTotalPrice(parseInt(quantity));
+                
+                // Здесь должна быть логика отправки данных на сервер
+                console.log('Отправка заказа:', { name, phone, quantity, totalPrice });
+                
+                // Показываем сообщение об успехе
+                alert(`Дякуємо за замовлення, ${name}! Менеджер зв'яжеться з вами протягом 30 хвилин.`);
+                
+                // Очищаем форму
+                this.reset();
+                updatePriceDisplay(quantitySelect, calculatedPrice);
+            });
             
             // Обработка отправки нижней формы
-            const bottomForm = document.getElementById('bottomOrderForm');
-            if (bottomForm) {
-                bottomForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const name = document.getElementById('bottomUserName').value;
-                    const phone = document.getElementById('bottomUserPhone').value;
-                    const quantity = bottomQuantitySelect ? bottomQuantitySelect.value : '1';
-                    const totalPrice = calculateTotalPrice(parseInt(quantity));
-                    
-                    // Здесь должна быть логика отправки данных на сервер
-                    console.log('Отправка заказа (нижняя форма):', { name, phone, quantity, totalPrice });
-                    
-                    // Показываем сообщение об успехе
-                    alert(`Дякуємо за замовлення, ${name}! Менеджер зв'яжеться з вами протягом 30 хвилин.`);
-                    
-                    // Очищаем форму
-                    this.reset();
-                });
-            }
-            
-            // Делаем функции глобальными для обработчиков в HTML
-            window.moveSlide = moveSlide;
-        }
+            document.getElementById('bottomOrderForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('bottomUserName').value;
+                const phone = document.getElementById('bottomUserPhone').value;
+                const quantity = bottomQuantitySelect.value;
+                const totalPrice = calculateTotalPrice(parseInt(quantity));
+                
+                // Здесь должна быть логика отправки данных на сервер
+                console.log('Отправка заказа (нижняя форма):', { name, phone, quantity, totalPrice });
+                
+                // Показываем сообщение об успехе
+                alert(`Дякуємо за замовлення, ${name}! Менеджер зв'яжеться з вами протягом 30 хвилин.`);
+                
+                // Очищаем форму
+                this.reset();
+                updatePriceDisplay(bottomQuantitySelect, bottomCalculatedPrice);
+            });
+        });
     </script>
 
 </body>
