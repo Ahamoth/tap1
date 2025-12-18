@@ -388,9 +388,10 @@
                 <div class="sub-text">РЕЙТИНГ МАГАЗИНУ</div>
             </div>
             <div class="last-order">
-                <div class="order-title">ОСТАННЄ ЗАМОВЛЕННЯ</div>
-                <div class="order-time">15.12.2025 17 ХВ ТОМУ</div>
-            </div>
+  <div class="order-title">ОСТАННЄ ЗАМОВЛЕННЯ</div>
+  <!-- Додали ID "orderTimeDisplay" -->
+  <div class="order-time" id="orderTimeDisplay"></div>
+</div>
         </header>
 
         <!-- ГЕРОЙ -->
@@ -801,7 +802,31 @@
         }
 
         // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('DOMContentLoaded', function() {
+    // --- Логіка оновлення дати та рандомного часу ---
+    const timeDisplay = document.getElementById('orderTimeDisplay');
+    const now = new Date();
+
+    // Форматуємо дату: ДД.ММ.РРРР
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    const dateString = `${day}.${month}.${year}`;
+
+    // Геруємо рандомні хвилини від 5 до 300 (що дорівнює 5 годинам)
+    const randomMinutes = Math.floor(Math.random() * (300 - 5 + 1)) + 5;
+    
+    let timeAgoText = "";
+    if (randomMinutes < 60) {
+        timeAgoText = `${randomMinutes} ХВ ТОМУ`;
+    } else {
+        const hours = Math.floor(randomMinutes / 60);
+        const mins = randomMinutes % 60;
+        timeAgoText = mins > 0 ? `${hours} ГОД ${mins} ХВ ТОМУ` : `${hours} ГОД ТОМУ`;
+    }
+
+    // Виводимо в блок
+    timeDisplay.textContent = `${dateString} ${timeAgoText}`;
             // Элементы верхней формы
             const quantitySelect = document.getElementById('quantitySelect');
             const calculatedPrice = document.getElementById('calculatedPrice');
