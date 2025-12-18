@@ -54,6 +54,16 @@
             position: relative;
             z-index: 20;
         }
+		.header::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 50px; /* Можна налаштувати висоту лінії */
+  background-color: #E0E0E0; /* Колір лінії (світло-сірий) */
+}
         .rating-val { font-size: 19px; font-weight: 900; color: #000; }
         .stars { color: #E67136; font-size: 24px; letter-spacing: 1px; }
         .sub-text { font-size: 14px; color: #555; text-transform: uppercase; margin-top: 3px; font-weight: 500;}
