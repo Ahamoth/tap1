@@ -203,10 +203,45 @@
             flex: 1; border: 1px solid #eaeaea; border-left: none; display: flex; align-items: center; padding: 0 15px; background: #fff;
         }
         .input-field { width: 100%; border: none; outline: none; font-size: 14px; color: #333; font-family: 'Roboto', sans-serif; font-weight: 300; }
+        
+        /* Стили для выпадающего списка количества */
+        .quantity-select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .quantity-select {
+            width: 100%;
+            height: 40px;
+            padding: 0 15px;
+            border: 1px solid #eaeaea;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 14px;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            appearance: none;
+            cursor: pointer;
+        }
+        .quantity-select:focus {
+            outline: none;
+            border-color: var(--yellow);
+        }
+        .quantity-price {
+            font-size: 14px;
+            color: var(--dark-green);
+            font-weight: 500;
+            margin-top: 5px;
+            text-align: center;
+        }
+        
         .btn-submit {
             width: 100%; background-color: var(--yellow); color: #fff; font-size: 20px; font-weight: 900;
             text-transform: uppercase; border: none; border-bottom: 5px solid var(--yellow-btn);
             padding: 20px 0; cursor: pointer; margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background-color: #e0b224;
         }
 
         /* --- СЕКЦІЯ "ПРО ТОВАР" (БЕЖЕВА) --- */
@@ -402,7 +437,7 @@
         </section>
 
         <!-- ФОРМА 1 -->
-        <section class="form-block">
+        <section class="form-block" id="orderForm">
             <div class="form-title">
                 ДЛЯ ТОГО ЩОБ <span class="highlight">ОФОРМИТИ</span> ЗАМОВЛЕННЯ<br>
                 <span class="highlight">ЗАЛИШТЕ СВОЮ ЗАЯВКУ</span>
@@ -411,7 +446,7 @@
                 З вами зв'яжеться менеджер протягом <span>30 хвилин</span>
             </div>
 
-            <form>
+            <form id="mainOrderForm">
                 <div class="input-wrapper">
                     <div class="input-icon">
                         <div class="icon-circle">
@@ -419,7 +454,7 @@
                         </div>
                     </div>
                     <div class="input-field-box">
-                        <input type="text" class="input-field" placeholder="Введіть ваше ім'я">
+                        <input type="text" class="input-field" id="userName" placeholder="Введіть ваше ім'я" required>
                     </div>
                 </div>
                 <div class="input-wrapper">
@@ -429,7 +464,7 @@
                         </div>
                     </div>
                     <div class="input-field-box">
-                        <input type="tel" class="input-field" placeholder="Введіть ваш номер телефону">
+                        <input type="tel" class="input-field" id="userPhone" placeholder="Введіть ваш номер телефону" required>
                     </div>
                 </div>
                 <div class="input-wrapper">
@@ -439,10 +474,17 @@
                         </div>
                     </div>
                     <div class="input-field-box">
-                        <input type="text" class="input-field" placeholder="Обрати кількість">
+                        <div class="quantity-select-wrapper">
+                            <select class="quantity-select" id="quantitySelect">
+                                <option value="1">1 упаковка - 215 грн</option>
+                                <option value="2">2 упаковки - 430 грн</option>
+                                <option value="3">3 упаковки - 645 грн</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <button type="button" class="btn-submit">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
+                <div class="quantity-price" id="calculatedPrice">Загальна вартість: 215 грн</div>
+                <button type="submit" class="btn-submit">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
             </form>
         </section>
 
@@ -545,7 +587,7 @@
             </div>
 
             <div style="padding: 0 20px;">
-                <button type="button" class="btn-submit" style="margin-top: 25px;">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
+                <button type="button" class="btn-submit" id="scrollToFormBtn" style="margin-top: 25px;">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
             </div>
         </section>
 
@@ -671,7 +713,7 @@
             <div class="form-subtitle">
                 З вами зв'яжеться менеджер протягом <span>30 хвилин</span>
             </div>
-            <form>
+            <form id="bottomOrderForm">
                 <div class="input-wrapper">
                     <div class="input-icon">
                         <div class="icon-circle">
@@ -679,7 +721,7 @@
                         </div>
                     </div>
                     <div class="input-field-box">
-                        <input type="text" class="input-field" placeholder="Введіть ваше ім'я">
+                        <input type="text" class="input-field" id="bottomUserName" placeholder="Введіть ваше ім'я" required>
                     </div>
                 </div>
                 <div class="input-wrapper">
@@ -689,7 +731,7 @@
                         </div>
                     </div>
                     <div class="input-field-box">
-                        <input type="tel" class="input-field" placeholder="Введіть ваш номер телефону">
+                        <input type="tel" class="input-field" id="bottomUserPhone" placeholder="Введіть ваш номер телефону" required>
                     </div>
                 </div>
                 <div class="input-wrapper">
@@ -699,10 +741,17 @@
                         </div>
                     </div>
                     <div class="input-field-box">
-                        <input type="text" class="input-field" placeholder="Обрати кількість">
+                        <div class="quantity-select-wrapper">
+                            <select class="quantity-select" id="bottomQuantitySelect">
+                                <option value="1">1 упаковка - 215 грн</option>
+                                <option value="2">2 упаковки - 430 грн</option>
+                                <option value="3">3 упаковки - 645 грн</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <button type="button" class="btn-submit">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
+                <div class="quantity-price" id="bottomCalculatedPrice">Загальна вартість: 215 грн</div>
+                <button type="submit" class="btn-submit">ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ</button>
             </form>
         </section>
 
@@ -711,7 +760,8 @@
     <script>
         let currentGroup = 0;
         const track = document.getElementById('reviewTrack');
-        const groups = 3; // Изменено с 2 на 3
+        const groups = 3;
+        const unitPrice = 215; // Цена за 1 упаковку
 
         function moveSlide(dir) {
             currentGroup += dir;
@@ -719,6 +769,96 @@
             if (currentGroup >= groups) currentGroup = 0;
             track.style.transform = `translateX(-${currentGroup * 100}%)`;
         }
+
+        // Функция для расчета общей стоимости
+        function calculateTotalPrice(quantity) {
+            return unitPrice * quantity;
+        }
+
+        // Функция для обновления отображаемой цены
+        function updatePriceDisplay(selectElement, priceElement) {
+            const quantity = parseInt(selectElement.value);
+            const totalPrice = calculateTotalPrice(quantity);
+            priceElement.textContent = `Загальна вартість: ${totalPrice} грн`;
+        }
+
+        // Функция для скролла к форме заказа
+        function scrollToOrderForm() {
+            const orderForm = document.getElementById('orderForm');
+            orderForm.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Элементы верхней формы
+            const quantitySelect = document.getElementById('quantitySelect');
+            const calculatedPrice = document.getElementById('calculatedPrice');
+            
+            // Элементы нижней формы
+            const bottomQuantitySelect = document.getElementById('bottomQuantitySelect');
+            const bottomCalculatedPrice = document.getElementById('bottomCalculatedPrice');
+            
+            // Кнопка для скролла к форме
+            const scrollToFormBtn = document.getElementById('scrollToFormBtn');
+            
+            // Обновление цены при изменении количества в верхней форме
+            quantitySelect.addEventListener('change', function() {
+                updatePriceDisplay(quantitySelect, calculatedPrice);
+            });
+            
+            // Обновление цены при изменении количества в нижней форме
+            bottomQuantitySelect.addEventListener('change', function() {
+                updatePriceDisplay(bottomQuantitySelect, bottomCalculatedPrice);
+            });
+            
+            // Обработка клика на кнопку "ЗАМОВИТИ ЗІ ЗНИЖКОЮ ЗАРАЗ" в середине лендинга
+            scrollToFormBtn.addEventListener('click', function() {
+                scrollToOrderForm();
+            });
+            
+            // Обработка отправки верхней формы
+            document.getElementById('mainOrderForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('userName').value;
+                const phone = document.getElementById('userPhone').value;
+                const quantity = quantitySelect.value;
+                const totalPrice = calculateTotalPrice(parseInt(quantity));
+                
+                // Здесь должна быть логика отправки данных на сервер
+                console.log('Отправка заказа:', { name, phone, quantity, totalPrice });
+                
+                // Показываем сообщение об успехе
+                alert(`Дякуємо за замовлення, ${name}! Менеджер зв'яжеться з вами протягом 30 хвилин.`);
+                
+                // Очищаем форму
+                this.reset();
+                updatePriceDisplay(quantitySelect, calculatedPrice);
+            });
+            
+            // Обработка отправки нижней формы
+            document.getElementById('bottomOrderForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('bottomUserName').value;
+                const phone = document.getElementById('bottomUserPhone').value;
+                const quantity = bottomQuantitySelect.value;
+                const totalPrice = calculateTotalPrice(parseInt(quantity));
+                
+                // Здесь должна быть логика отправки данных на сервер
+                console.log('Отправка заказа (нижняя форма):', { name, phone, quantity, totalPrice });
+                
+                // Показываем сообщение об успехе
+                alert(`Дякуємо за замовлення, ${name}! Менеджер зв'яжеться з вами протягом 30 хвилин.`);
+                
+                // Очищаем форму
+                this.reset();
+                updatePriceDisplay(bottomQuantitySelect, bottomCalculatedPrice);
+            });
+        });
     </script>
 
 </body>
