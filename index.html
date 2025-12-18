@@ -10,8 +10,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Gilroy:wght@400;700&family=Roboto:wght@300;400;500;700;900&family=Ubuntu+Sans:wght@300;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* --- БАЗОВІ НАЛАШТУВАННЯ --- */
+       /* --- БАЗОВІ НАЛАШТУВАННЯ --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+		html {
+    overscroll-behavior: none;
+}
+
+body {
+    /* Убираем стандартное поведение прокрутки тела */
+    overscroll-behavior-y: none;
+    /* Позволяем прокрутку только внутри wrapper */
+    overflow: hidden;
+}
+
+.wrapper {
+    /* Разрешаем прокрутку только внутри контейнера */
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Для iOS */
+}
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #e5e5e5;
@@ -26,19 +43,10 @@
             overflow-x: hidden;
             position: relative;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
-			 height: 100vh;
-    		overflow-y: auto;
-    		-webkit-overflow-scrolling: touch;
         }
         img { max-width: 100%; display: block; }
         ul { list-style: none; }
-
-html, body {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-
+        
         /* --- КОЛЬОРИ --- */
         :root {
             --dark-green: #0F3D2E;
