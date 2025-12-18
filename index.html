@@ -20,7 +20,9 @@ body {
     background-color: #e5e5e5;
     display: flex;
     justify-content: center;
+    align-items: center;
     min-height: 100vh;
+    padding: 20px 0;
     overflow: hidden;
     overscroll-behavior-y: none;
 }
@@ -29,25 +31,29 @@ body {
     max-width: 430px;
     background: #FFFFFF;
     overflow-x: hidden;
-    overflow-y: auto; /* Оставляем для мобильных */
     position: relative;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    -webkit-overflow-scrolling: touch;
-    height: 100vh; /* Фиксируем высоту */
+    max-height: 95vh; /* Ограничиваем максимальную высоту */
 }
 
-/* Скрываем скроллбар на десктопе */
-@media (min-width: 768px) {
+/* Для мобильных - разрешаем скролл внутри */
+@media (max-width: 767px) {
     .wrapper {
-        overflow-y: hidden; /* Скрываем скроллбар на десктопе */
+        height: 100vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
-    
-    /* Делаем контент внутри wrapper прокручиваемым */
-    .wrapper::after {
-        content: '';
-        display: block;
-        height: 1px;
-    }
+}
+
+/* Скрываем скроллбар на всех устройствах */
+.wrapper::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.wrapper {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
         
         /* --- КОЛЬОРИ --- */
