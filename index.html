@@ -10,51 +10,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Gilroy:wght@400;700&family=Roboto:wght@300;400;500;700;900&family=Ubuntu+Sans:wght@300;700;800&display=swap" rel="stylesheet">
 
     <style>
-      /* --- БАЗОВІ НАЛАШТУВАННЯ --- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html {
-    overscroll-behavior: none;
-}
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #e5e5e5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px 0;
-    overflow: hidden;
-    overscroll-behavior-y: none;
-}
-.wrapper {
-    width: 100%;
-    max-width: 430px;
-    background: #FFFFFF;
-    overflow-x: hidden;
-    position: relative;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    max-height: 95vh; /* Ограничиваем максимальную высоту */
-}
-
-/* Для мобильных - разрешаем скролл внутри */
-@media (max-width: 767px) {
-    .wrapper {
-        height: 100vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-/* Скрываем скроллбар на всех устройствах */
-.wrapper::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-}
-
-.wrapper {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-}
+  /* --- БАЗОВІ НАЛАШТУВАННЯ --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e5e5e5;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .wrapper {
+            width: 100%;
+            max-width: 430px;
+            background: #FFFFFF;
+            overflow-x: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
         
         /* --- КОЛЬОРИ --- */
         :root {
@@ -68,6 +42,7 @@ body {
             --text-dark: #2B2B2B;
             --gray: #808080;
         }
+
 
         /* --- ХЕДЕР --- */
         .header {
